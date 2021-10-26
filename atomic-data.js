@@ -103,8 +103,12 @@ make;
 
 makeDeck = [];
 
-for(entry of allEntries){
-  makeDeck.push(makeCard());
+function makDeck(){
+  for(entry of allEntries){
+    makeDeck.push(makeCard());
+  }
+  return makeDeck;
 }
 
-makeDeck
+let deck = makDeck();
+deck
