@@ -61,4 +61,50 @@ const allEntries = [
   { name: 'JOKER', blurb: 'Psychic' },
   { name: 'BumbleZ', blurb: 'remarkable ability to be distracted' }
 ],
-      sample = {name: 'matt', blurb: 'just some guy'};
+
+sample = {name: 'matt', blurb: 'just some guy'};
+
+
+function letsTag(a,c,b={}){output=`<${c} `;Object.keys(b).map((k,i)=>output+=`${k}="${b[k]}" `);output+=`>${a}</${c}>`;return output}
+
+function makeHeader(name) {
+  let title = letsTag(name, 'h1');
+  let header = letsTag(title, 'header')
+  return header
+}
+      
+function makeMain (blurb) {
+  let text = letsTag(blurb, 'p')
+  let someMain = letsTag (text, 'main', {class:'card'})
+  return someMain
+}
+      
+function makeFooter() {
+  let link = letsTag('A Project of HIS393','a',
+  {href: "https://digitalhistory.github.io"})
+  let someFooter = letsTag(link, 'footer')
+  return someFooter
+}
+
+function makeCard(){
+  let output = '';
+  output += makeHeader(person.name);
+  output += makeMain(person.blurb);
+  output += makeFooter();
+  let someCard = letsTag(output, 'card');
+  return someCard;
+}
+
+let person = {name: "someone",
+blurb: 'I make a mean cup of tea n coffee'};
+
+let make = makeCard();
+make;
+
+makeDeck = [];
+
+for(entry of allEntries){
+  makeDeck.push(makeCard());
+}
+
+makeDeck
